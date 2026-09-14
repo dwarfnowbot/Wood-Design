@@ -1,0 +1,142 @@
+{
+  "version": "0.4",
+  "title": "Maison Woodcraft - Header",
+  "type": "header",
+  "content": [
+    {
+      "id": "0000005",
+      "elType": "container",
+      "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "flex_gap": {
+          "column": "0",
+          "row": "0",
+          "unit": "px",
+          "size": 0,
+          "isLinked": true
+        },
+        "padding": {
+          "unit": "px",
+          "top": "0",
+          "right": "0",
+          "bottom": "0",
+          "left": "0",
+          "isLinked": false
+        },
+        "background_background": "classic",
+        "background_color": "#f7f3ec"
+      },
+      "elements": [
+        {
+          "id": "0000004",
+          "elType": "container",
+          "settings": {
+            "content_width": "boxed",
+            "flex_direction": "row",
+            "flex_gap": {
+              "column": "32",
+              "row": "16",
+              "unit": "px",
+              "size": 32,
+              "isLinked": true
+            },
+            "boxed_width": {
+              "unit": "px",
+              "size": 1216,
+              "sizes": {}
+            },
+            "flex_align_items": "center",
+            "flex_justify_content": "space-between",
+            "padding": {
+              "unit": "px",
+              "top": "18",
+              "right": "32",
+              "bottom": "18",
+              "left": "32",
+              "isLinked": false
+            },
+            "padding_mobile": {
+              "unit": "px",
+              "top": "14",
+              "right": "20",
+              "bottom": "14",
+              "left": "20",
+              "isLinked": false
+            },
+            "background_background": "classic",
+            "background_color": "#f7f3ec",
+            "_css_classes": "mw-demo-header"
+          },
+          "elements": [
+            {
+              "id": "0000001",
+              "elType": "widget",
+              "widgetType": "theme-site-logo",
+              "settings": {
+                "size": {
+                  "unit": "px",
+                  "size": 44,
+                  "sizes": {}
+                },
+                "width": {
+                  "unit": "px",
+                  "size": 140,
+                  "sizes": {}
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "0000002",
+              "elType": "widget",
+              "widgetType": "nav-menu",
+              "settings": {
+                "menu": "primary",
+                "layout": "horizontal",
+                "align_items": "center",
+                "pointer": "underline",
+                "color_menu_item": "#2b241d",
+                "color_menu_item_hover": "#a9814f",
+                "color_menu_item_active": "#a9814f",
+                "pointer_color_menu_item_hover": "#a9814f",
+                "menu_typography_typography": "custom",
+                "menu_typography_font_family": "Jost",
+                "menu_typography_font_size": {
+                  "unit": "px",
+                  "size": 13,
+                  "sizes": {}
+                },
+                "menu_typography_font_weight": "400",
+                "menu_typography_text_transform": "uppercase",
+                "menu_typography_letter_spacing": {
+                  "unit": "px",
+                  "size": 0.6,
+                  "sizes": {}
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "0000003",
+              "elType": "widget",
+              "widgetType": "mw_button",
+              "settings": {
+                "label": "Get a Quote",
+                "link": {
+                  "url": "/get-a-quote",
+                  "is_external": "",
+                  "nofollow": ""
+                },
+                "variant": "ghost",
+                "size": "header"
+              },
+              "elements": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "page_settings": {}
+}

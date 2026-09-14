@@ -1,0 +1,524 @@
+{
+  "version": "0.4",
+  "title": "Maison Woodcraft - Footer",
+  "type": "footer",
+  "content": [
+    {
+      "id": "0000020",
+      "elType": "container",
+      "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "flex_gap": {
+          "column": "0",
+          "row": "0",
+          "unit": "px",
+          "size": 0,
+          "isLinked": true
+        },
+        "padding": {
+          "unit": "px",
+          "top": "0",
+          "right": "0",
+          "bottom": "0",
+          "left": "0",
+          "isLinked": false
+        },
+        "background_background": "classic",
+        "background_color": "#2a2a28"
+      },
+      "elements": [
+        {
+          "id": "000001d",
+          "elType": "container",
+          "settings": {
+            "content_width": "boxed",
+            "flex_direction": "row",
+            "flex_gap": {
+              "column": "48",
+              "row": "48",
+              "unit": "px",
+              "size": 48,
+              "isLinked": true
+            },
+            "boxed_width": {
+              "unit": "px",
+              "size": 1216,
+              "sizes": {}
+            },
+            "flex_wrap": "wrap",
+            "padding": {
+              "unit": "px",
+              "top": "64",
+              "right": "32",
+              "bottom": "64",
+              "left": "32",
+              "isLinked": false
+            },
+            "padding_mobile": {
+              "unit": "px",
+              "top": "48",
+              "right": "20",
+              "bottom": "48",
+              "left": "20",
+              "isLinked": false
+            }
+          },
+          "elements": [
+            {
+              "id": "000000d",
+              "elType": "container",
+              "settings": {
+                "content_width": "full",
+                "flex_direction": "column",
+                "flex_gap": {
+                  "column": "0",
+                  "row": "16",
+                  "unit": "px",
+                  "size": 16,
+                  "isLinked": true
+                },
+                "width": {
+                  "unit": "%",
+                  "size": 23,
+                  "sizes": {}
+                },
+                "width_mobile": {
+                  "unit": "%",
+                  "size": 100,
+                  "sizes": {}
+                }
+              },
+              "elements": [
+                {
+                  "id": "000000c",
+                  "elType": "widget",
+                  "widgetType": "heading",
+                  "settings": {
+                    "title": "Maison Woodcraft",
+                    "header_size": "h3",
+                    "title_color": "#d9c6a5",
+                    "typography_typography": "custom",
+                    "typography_font_family": "Jost",
+                    "typography_font_size": {
+                      "unit": "px",
+                      "size": 12,
+                      "sizes": {}
+                    },
+                    "typography_font_weight": "500",
+                    "typography_text_transform": "uppercase",
+                    "typography_letter_spacing": {
+                      "unit": "px",
+                      "size": 2.4,
+                      "sizes": {}
+                    }
+                  },
+                  "elements": []
+                },
+                {
+                  "id": "0000006",
+                  "elType": "widget",
+                  "widgetType": "text-editor",
+                  "settings": {
+                    "editor": "<p>Custom kitchens, wardrobes, and complete home woodwork for homeowners across Lahore &mdash; designed around your space and crafted with care.</p>",
+                    "text_color": "rgba(247,243,236,0.6)",
+                    "typography_typography": "custom",
+                    "typography_font_family": "Jost",
+                    "typography_font_size": {
+                      "unit": "px",
+                      "size": 14,
+                      "sizes": {}
+                    }
+                  },
+                  "elements": []
+                },
+                {
+                  "id": "000000b",
+                  "elType": "widget",
+                  "widgetType": "social-icons",
+                  "settings": {
+                    "social_icon_list": [
+                      {
+                        "social_icon": {
+                          "value": "fab fa-instagram",
+                          "library": "fa-brands"
+                        },
+                        "_id": "0000007"
+                      },
+                      {
+                        "social_icon": {
+                          "value": "fab fa-facebook",
+                          "library": "fa-brands"
+                        },
+                        "_id": "0000008"
+                      },
+                      {
+                        "social_icon": {
+                          "value": "fab fa-pinterest",
+                          "library": "fa-brands"
+                        },
+                        "_id": "0000009"
+                      },
+                      {
+                        "social_icon": {
+                          "value": "fab fa-linkedin",
+                          "library": "fa-brands"
+                        },
+                        "_id": "000000a"
+                      }
+                    ],
+                    "shape": "circle",
+                    "icon_size": {
+                      "unit": "px",
+                      "size": 14,
+                      "sizes": {}
+                    },
+                    "icon_primary_color": "rgba(247,243,236,0.08)",
+                    "icon_secondary_color": "#f7f3ec",
+                    "icon_padding": {
+                      "unit": "px",
+                      "size": 0.8,
+                      "sizes": {}
+                    }
+                  },
+                  "elements": []
+                }
+              ]
+            },
+            {
+              "id": "0000011",
+              "elType": "container",
+              "settings": {
+                "content_width": "full",
+                "flex_direction": "column",
+                "flex_gap": {
+                  "column": "0",
+                  "row": "16",
+                  "unit": "px",
+                  "size": 16,
+                  "isLinked": true
+                },
+                "width": {
+                  "unit": "%",
+                  "size": 23,
+                  "sizes": {}
+                },
+                "width_mobile": {
+                  "unit": "%",
+                  "size": 100,
+                  "sizes": {}
+                }
+              },
+              "elements": [
+                {
+                  "id": "0000010",
+                  "elType": "widget",
+                  "widgetType": "heading",
+                  "settings": {
+                    "title": "Quick Links",
+                    "header_size": "h3",
+                    "title_color": "#d9c6a5",
+                    "typography_typography": "custom",
+                    "typography_font_family": "Jost",
+                    "typography_font_size": {
+                      "unit": "px",
+                      "size": 12,
+                      "sizes": {}
+                    },
+                    "typography_font_weight": "500",
+                    "typography_text_transform": "uppercase",
+                    "typography_letter_spacing": {
+                      "unit": "px",
+                      "size": 2.4,
+                      "sizes": {}
+                    }
+                  },
+                  "elements": []
+                },
+                {
+                  "id": "000000e",
+                  "elType": "widget",
+                  "widgetType": "mw_button",
+                  "settings": {
+                    "label": "All pages",
+                    "link": {
+                      "url": "/",
+                      "is_external": "",
+                      "nofollow": ""
+                    },
+                    "variant": "secondary",
+                    "size": "menu"
+                  },
+                  "elements": []
+                },
+                {
+                  "id": "000000f",
+                  "elType": "widget",
+                  "widgetType": "text-editor",
+                  "settings": {
+                    "editor": "<p>Assign the <strong>Footer Quick Links</strong> menu here, or add your own list of links.</p>",
+                    "text_color": "rgba(247,243,236,0.7)",
+                    "typography_typography": "custom",
+                    "typography_font_family": "Jost",
+                    "typography_font_size": {
+                      "unit": "px",
+                      "size": 14,
+                      "sizes": {}
+                    }
+                  },
+                  "elements": []
+                }
+              ]
+            },
+            {
+              "id": "0000018",
+              "elType": "container",
+              "settings": {
+                "content_width": "full",
+                "flex_direction": "column",
+                "flex_gap": {
+                  "column": "0",
+                  "row": "16",
+                  "unit": "px",
+                  "size": 16,
+                  "isLinked": true
+                },
+                "width": {
+                  "unit": "%",
+                  "size": 23,
+                  "sizes": {}
+                },
+                "width_mobile": {
+                  "unit": "%",
+                  "size": 100,
+                  "sizes": {}
+                }
+              },
+              "elements": [
+                {
+                  "id": "0000017",
+                  "elType": "widget",
+                  "widgetType": "heading",
+                  "settings": {
+                    "title": "Services",
+                    "header_size": "h3",
+                    "title_color": "#d9c6a5",
+                    "typography_typography": "custom",
+                    "typography_font_family": "Jost",
+                    "typography_font_size": {
+                      "unit": "px",
+                      "size": 12,
+                      "sizes": {}
+                    },
+                    "typography_font_weight": "500",
+                    "typography_text_transform": "uppercase",
+                    "typography_letter_spacing": {
+                      "unit": "px",
+                      "size": 2.4,
+                      "sizes": {}
+                    }
+                  },
+                  "elements": []
+                },
+                {
+                  "id": "0000016",
+                  "elType": "widget",
+                  "widgetType": "icon-list",
+                  "settings": {
+                    "icon_list": [
+                      {
+                        "text": "Custom Kitchens",
+                        "selected_icon": {
+                          "value": "",
+                          "library": ""
+                        },
+                        "_id": "0000012"
+                      },
+                      {
+                        "text": "Wardrobes & Storage",
+                        "selected_icon": {
+                          "value": "",
+                          "library": ""
+                        },
+                        "_id": "0000013"
+                      },
+                      {
+                        "text": "Interior Woodwork",
+                        "selected_icon": {
+                          "value": "",
+                          "library": ""
+                        },
+                        "_id": "0000014"
+                      },
+                      {
+                        "text": "Materials & Finishes",
+                        "selected_icon": {
+                          "value": "",
+                          "library": ""
+                        },
+                        "_id": "0000015"
+                      }
+                    ],
+                    "space_between": {
+                      "unit": "px",
+                      "size": 10,
+                      "sizes": {}
+                    },
+                    "text_color": "rgba(247,243,236,0.7)",
+                    "icon_typography_typography": "custom",
+                    "icon_typography_font_family": "Jost",
+                    "icon_typography_font_size": {
+                      "unit": "px",
+                      "size": 14,
+                      "sizes": {}
+                    }
+                  },
+                  "elements": []
+                }
+              ]
+            },
+            {
+              "id": "000001c",
+              "elType": "container",
+              "settings": {
+                "content_width": "full",
+                "flex_direction": "column",
+                "flex_gap": {
+                  "column": "0",
+                  "row": "16",
+                  "unit": "px",
+                  "size": 16,
+                  "isLinked": true
+                },
+                "width": {
+                  "unit": "%",
+                  "size": 23,
+                  "sizes": {}
+                },
+                "width_mobile": {
+                  "unit": "%",
+                  "size": 100,
+                  "sizes": {}
+                }
+              },
+              "elements": [
+                {
+                  "id": "000001b",
+                  "elType": "widget",
+                  "widgetType": "heading",
+                  "settings": {
+                    "title": "Contact",
+                    "header_size": "h3",
+                    "title_color": "#d9c6a5",
+                    "typography_typography": "custom",
+                    "typography_font_family": "Jost",
+                    "typography_font_size": {
+                      "unit": "px",
+                      "size": 12,
+                      "sizes": {}
+                    },
+                    "typography_font_weight": "500",
+                    "typography_text_transform": "uppercase",
+                    "typography_letter_spacing": {
+                      "unit": "px",
+                      "size": 2.4,
+                      "sizes": {}
+                    }
+                  },
+                  "elements": []
+                },
+                {
+                  "id": "0000019",
+                  "elType": "widget",
+                  "widgetType": "text-editor",
+                  "settings": {
+                    "editor": "<p>Studio &amp; Workshop, DHA Phase 6, Lahore, Pakistan<br />Serving Lahore &amp; surrounding areas<br />+92 300 0000000<br />hello@maisonwoodcraft.example</p>",
+                    "text_color": "rgba(247,243,236,0.7)",
+                    "typography_typography": "custom",
+                    "typography_font_family": "Jost",
+                    "typography_font_size": {
+                      "unit": "px",
+                      "size": 14,
+                      "sizes": {}
+                    }
+                  },
+                  "elements": []
+                },
+                {
+                  "id": "000001a",
+                  "elType": "widget",
+                  "widgetType": "mw_button",
+                  "settings": {
+                    "label": "Chat on WhatsApp",
+                    "link": {
+                      "url": "",
+                      "is_external": "",
+                      "nofollow": ""
+                    },
+                    "variant": "whatsapp",
+                    "size": "menu"
+                  },
+                  "elements": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "000001f",
+          "elType": "container",
+          "settings": {
+            "content_width": "full",
+            "flex_direction": "column",
+            "flex_gap": {
+              "column": "0",
+              "row": "0",
+              "unit": "px",
+              "size": 0,
+              "isLinked": true
+            },
+            "padding": {
+              "unit": "px",
+              "top": "20",
+              "right": "32",
+              "bottom": "20",
+              "left": "32",
+              "isLinked": false
+            },
+            "border_border": "solid",
+            "border_width": {
+              "unit": "px",
+              "top": "1",
+              "right": "0",
+              "bottom": "0",
+              "left": "0",
+              "isLinked": false
+            },
+            "border_color": "rgba(221,210,189,0.2)"
+          },
+          "elements": [
+            {
+              "id": "000001e",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<p>&copy; 2026 Maison Woodcraft. All rights reserved.</p>",
+                "align": "center",
+                "text_color": "rgba(247,243,236,0.5)",
+                "typography_typography": "custom",
+                "typography_font_family": "Jost",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 12,
+                  "sizes": {}
+                }
+              },
+              "elements": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "page_settings": {}
+}

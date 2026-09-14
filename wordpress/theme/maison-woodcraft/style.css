@@ -1,0 +1,725 @@
+/*
+Theme Name: Maison Woodcraft
+Theme URI: https://github.com/dwarfnowbot/Wood-Design
+Author: Maison Woodcraft
+Author URI: https://github.com/dwarfnowbot/Wood-Design
+Description: A hand-built, Elementor-ready WordPress theme converted 1:1 from the original "Maison Woodcraft" React + Vite website (custom kitchens & complete home woodwork, Lahore). Ships custom Elementor widgets for every original component (hero, trust strip, service cards, project grid, testimonials, process timeline, materials, FAQs, CTA, forms, WhatsApp), a Projects custom post type, working quote/contact forms and a one-click demo importer that recreates all original pages as editable Elementor layouts.
+Version: 1.0.2
+Requires at least: 6.0
+Tested up to: 6.7
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: maison-woodcraft
+Tags: elementor, elementor-ready, custom-colors, custom-menu, custom-logo, featured-images, translation-ready, full-width-template, block-styles, wide-blocks, portfolio
+*/
+
+/* ===========================================================================
+ * MAISON WOODCRAFT — design system
+ * ---------------------------------------------------------------------------
+ * Values below are the original project's Tailwind v4 @theme tokens
+ * (original-source/src/index.css) converted to plain CSS custom properties.
+ * ========================================================================= */
+
+:root {
+	/* Fonts */
+	--mw-font-serif: "Cormorant Garamond", "Georgia", serif;
+	--mw-font-sans: "Jost", "Helvetica Neue", Arial, sans-serif;
+
+	/* Colour palette */
+	--mw-ivory: #f7f3ec;
+	--mw-ivory-dark: #efe8db;
+	--mw-stone: #ece4d6;
+	--mw-stone-dark: #ddd2bd;
+	--mw-espresso: #2b241d;
+	--mw-espresso-light: #4a4038;
+	--mw-charcoal: #2a2a28;
+	--mw-walnut: #6b4a34;
+	--mw-walnut-dark: #4f3626;
+	--mw-bronze: #a9814f;
+	--mw-bronze-light: #c9a877;
+	--mw-champagne: #d9c6a5;
+	--mw-whatsapp: #25d366;
+
+	/* Alpha helpers (mirror the original /opacity utilities) */
+	--mw-espresso-80: rgba(43, 36, 29, 0.8);
+	--mw-espresso-70: rgba(43, 36, 29, 0.7);
+	--mw-espresso-50: rgba(43, 36, 29, 0.5);
+	--mw-espresso-45: rgba(43, 36, 29, 0.45);
+	--mw-espresso-30: rgba(43, 36, 29, 0.3);
+	--mw-ivory-95: rgba(247, 243, 236, 0.95);
+	--mw-ivory-90: rgba(247, 243, 236, 0.9);
+	--mw-ivory-85: rgba(247, 243, 236, 0.85);
+	--mw-ivory-80: rgba(247, 243, 236, 0.8);
+	--mw-ivory-75: rgba(247, 243, 236, 0.75);
+	--mw-ivory-70: rgba(247, 243, 236, 0.7);
+	--mw-ivory-60: rgba(247, 243, 236, 0.6);
+	--mw-ivory-50: rgba(247, 243, 236, 0.5);
+	--mw-stone-dark-60: rgba(221, 210, 189, 0.6);
+	--mw-stone-dark-50: rgba(221, 210, 189, 0.5);
+	--mw-stone-dark-40: rgba(221, 210, 189, 0.4);
+	--mw-bronze-40: rgba(169, 129, 79, 0.4);
+
+	/* Layout */
+	--mw-container: 80rem; /* max-w-7xl */
+	--mw-gutter: 1.25rem; /* px-5 */
+	--mw-gutter-sm: 2rem; /* sm:px-8 */
+	--mw-radius-2xl: 1rem;
+	--mw-radius-xl: 0.75rem;
+	--mw-radius-pill: 999px;
+	--mw-shadow-card: 0 20px 25px -5px rgba(43, 36, 29, 0.1), 0 8px 10px -6px rgba(43, 36, 29, 0.1);
+	--mw-shadow-float: 0 20px 25px -5px rgba(0, 0, 0, 0.25), 0 8px 10px -6px rgba(0, 0, 0, 0.25);
+}
+
+/* ---------------------------------------------------------------------------
+ * Base
+ * ------------------------------------------------------------------------ */
+
+html {
+	scroll-behavior: smooth;
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
+	margin: 0;
+	background-color: var(--mw-ivory);
+	color: var(--mw-espresso);
+	font-family: var(--mw-font-sans);
+	font-size: 1rem;
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--mw-font-serif);
+	font-weight: 500;
+	margin: 0;
+	color: inherit;
+}
+
+p {
+	margin: 0;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+img,
+svg,
+video {
+	max-width: 100%;
+}
+
+img {
+	height: auto;
+	display: block;
+}
+
+button {
+	font: inherit;
+	cursor: pointer;
+}
+
+ul,
+ol {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+::selection {
+	background-color: var(--mw-bronze-light);
+	color: var(--mw-espresso);
+}
+
+/* Thin, elegant scrollbar (original index.css) */
+::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--mw-ivory);
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--mw-stone-dark);
+	border-radius: var(--mw-radius-pill);
+}
+
+.mw-serif,
+.font-serif-display {
+	font-family: var(--mw-font-serif);
+}
+
+.mw-sans {
+	font-family: var(--mw-font-sans);
+}
+
+/* Accessibility helpers */
+.mw-visually-hidden,
+.screen-reader-text {
+	position: absolute !important;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	white-space: nowrap;
+	border: 0;
+	padding: 0;
+	margin: -1px;
+}
+
+.skip-link:focus {
+	position: fixed;
+	top: 0.5rem;
+	left: 0.5rem;
+	z-index: 100000;
+	width: auto;
+	height: auto;
+	clip: auto;
+	clip-path: none;
+	padding: 0.75rem 1.25rem;
+	background: var(--mw-espresso);
+	color: var(--mw-ivory);
+	border-radius: var(--mw-radius-pill);
+	font-size: 0.875rem;
+	text-transform: uppercase;
+	letter-spacing: 0.025em;
+}
+
+/* ---------------------------------------------------------------------------
+ * Animations (original: fade-up + staggered delays)
+ * ------------------------------------------------------------------------ */
+
+@keyframes mw-fade-up {
+	from {
+		opacity: 0;
+		transform: translateY(18px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.animate-fade-up,
+.mw-fade-up {
+	animation: mw-fade-up 0.8s ease-out both;
+}
+
+.animate-fade-up-delay-1,
+.mw-fade-up-1 {
+	animation: mw-fade-up 0.8s ease-out 0.12s both;
+}
+
+.animate-fade-up-delay-2,
+.mw-fade-up-2 {
+	animation: mw-fade-up 0.8s ease-out 0.24s both;
+}
+
+.animate-fade-up-delay-3,
+.mw-fade-up-3 {
+	animation: mw-fade-up 0.8s ease-out 0.36s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	.animate-fade-up,
+	.mw-fade-up,
+	.animate-fade-up-delay-1,
+	.mw-fade-up-1,
+	.animate-fade-up-delay-2,
+	.mw-fade-up-2,
+	.animate-fade-up-delay-3,
+	.mw-fade-up-3 {
+		animation: none;
+	}
+
+	* {
+		transition-duration: 0.001ms !important;
+	}
+}
+
+/* ---------------------------------------------------------------------------
+ * Page scaffolding (original Layout.tsx: min-h-screen flex flex-col bg-ivory)
+ * ------------------------------------------------------------------------ */
+
+.mw-site {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	background-color: var(--mw-ivory);
+}
+
+.mw-main {
+	flex: 1 1 auto;
+}
+
+.mw-container {
+	width: 100%;
+	max-width: var(--mw-container);
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: var(--mw-gutter);
+	padding-right: var(--mw-gutter);
+}
+
+@media (min-width: 640px) {
+	.mw-container {
+		padding-left: var(--mw-gutter-sm);
+		padding-right: var(--mw-gutter-sm);
+	}
+}
+
+.mw-container--narrow {
+	max-width: 64rem; /* max-w-5xl */
+}
+
+.mw-container--text {
+	max-width: 56rem; /* max-w-4xl */
+}
+
+.mw-container--center {
+	max-width: 72rem; /* max-w-6xl */
+}
+
+/* Sections (original: py-20 sm:py-28) */
+.mw-section {
+	padding-top: 5rem;
+	padding-bottom: 5rem;
+}
+
+@media (min-width: 640px) {
+	.mw-section {
+		padding-top: 7rem;
+		padding-bottom: 7rem;
+	}
+}
+
+.mw-section--tight {
+	padding-top: 4rem;
+	padding-bottom: 4rem;
+}
+
+@media (min-width: 640px) {
+	.mw-section--tight {
+		padding-top: 5rem;
+		padding-bottom: 5rem;
+	}
+}
+
+.mw-section--medium {
+	padding-top: 5rem;
+	padding-bottom: 5rem;
+}
+
+@media (min-width: 640px) {
+	.mw-section--medium {
+		padding-top: 6rem;
+		padding-bottom: 6rem;
+	}
+}
+
+.mw-section--plain {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.mw-section--stone {
+	background-color: var(--mw-stone);
+}
+
+.mw-section--espresso {
+	background-color: var(--mw-espresso);
+}
+
+.mw-section--ivory {
+	background-color: var(--mw-ivory);
+}
+
+.mw-section--white {
+	background-color: #fff;
+}
+
+.mw-section--bordered {
+	border-top: 1px solid var(--mw-stone-dark-60);
+	border-bottom: 1px solid var(--mw-stone-dark-60);
+}
+
+/* ---------------------------------------------------------------------------
+ * Layout helpers that mirror the original grid/flex utilities
+ * ------------------------------------------------------------------------ */
+
+.mw-split {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 3rem;
+	align-items: center;
+}
+
+@media (min-width: 1024px) {
+	.mw-split {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 5rem;
+	}
+}
+
+.mw-split--tight {
+	gap: 3rem;
+}
+
+.mw-split__first {
+	order: 2;
+}
+
+@media (min-width: 1024px) {
+	.mw-split__first {
+		order: 1;
+	}
+}
+
+.mw-split__last {
+	order: 1;
+}
+
+@media (min-width: 1024px) {
+	.mw-split__last {
+		order: 2;
+	}
+}
+
+.mw-cards {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 2rem;
+}
+
+@media (min-width: 640px) {
+	.mw-cards {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (min-width: 1024px) {
+	.mw-cards {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+}
+
+.mw-cards--four {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+	.mw-cards--four {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+}
+
+@media (min-width: 1024px) {
+	.mw-cards--four {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+}
+
+.mw-mt-6 {
+	margin-top: 1.5rem;
+}
+
+.mw-mt-8 {
+	margin-top: 2rem;
+}
+
+.mw-mt-10 {
+	margin-top: 2.5rem;
+}
+
+.mw-mt-12 {
+	margin-top: 3rem;
+}
+
+.mw-mt-14 {
+	margin-top: 3.5rem;
+}
+
+.mw-mt-16 {
+	margin-top: 4rem;
+}
+
+.mw-flex-between {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+	.mw-flex-between {
+		flex-direction: row;
+		align-items: flex-end;
+		justify-content: space-between;
+	}
+}
+
+/* Column order helpers (Tailwind order-1 / lg:order-2 etc. from the original markup) */
+.mw-order-1 {
+	order: 1;
+}
+
+.mw-order-2 {
+	order: 2;
+}
+
+@media (min-width: 1024px) {
+	.mw-order-lg-1 {
+		order: 1;
+	}
+
+	.mw-order-lg-2 {
+		order: 2;
+	}
+}
+
+/* Images that keep the original crops */
+.mw-frame {
+	position: relative;
+	overflow: hidden;
+	border-radius: var(--mw-radius-2xl);
+}
+
+.mw-frame img,
+.mw-frame > .elementor-widget-container > img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+.mw-frame--4x5 {
+	aspect-ratio: 4 / 5;
+}
+
+.mw-frame--4x3 {
+	aspect-ratio: 4 / 3;
+}
+
+.mw-frame--16x9 {
+	aspect-ratio: 16 / 9;
+}
+
+.mw-frame--square {
+	aspect-ratio: 1 / 1;
+}
+
+/* ---------------------------------------------------------------------------
+ * Fallback "classic content" styling — used for pages/posts that are not
+ * built with Elementor, so plain WordPress content still looks on-brand.
+ * ------------------------------------------------------------------------ */
+
+.mw-prose {
+	padding-top: 5rem;
+	padding-bottom: 5rem;
+	color: var(--mw-espresso-light);
+}
+
+.mw-prose > * {
+	max-width: 46rem;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: var(--mw-gutter);
+	padding-right: var(--mw-gutter);
+}
+
+.mw-prose h1,
+.mw-prose h2,
+.mw-prose h3,
+.mw-prose h4 {
+	color: var(--mw-espresso);
+	line-height: 1.25;
+	margin-bottom: 1rem;
+	margin-top: 2.5rem;
+}
+
+.mw-prose h1 {
+	font-size: 2.25rem;
+}
+
+.mw-prose h2 {
+	font-size: 1.875rem;
+}
+
+.mw-prose h3 {
+	font-size: 1.5rem;
+}
+
+.mw-prose p,
+.mw-prose ul,
+.mw-prose ol,
+.mw-prose blockquote {
+	margin-bottom: 1.25rem;
+	line-height: 1.625;
+}
+
+.mw-prose ul,
+.mw-prose ol {
+	list-style: disc;
+	padding-left: 3rem;
+}
+
+.mw-prose ol {
+	list-style: decimal;
+}
+
+.mw-prose a {
+	color: var(--mw-walnut-dark);
+	text-decoration: underline;
+	text-underline-offset: 2px;
+}
+
+.mw-prose a:hover {
+	color: var(--mw-bronze);
+}
+
+.mw-prose img,
+.mw-prose figure img {
+	border-radius: var(--mw-radius-2xl);
+}
+
+.mw-prose blockquote {
+	border-left: 2px solid var(--mw-bronze);
+	padding-left: 1.5rem;
+	font-family: var(--mw-font-serif);
+	font-size: 1.25rem;
+	color: var(--mw-espresso);
+}
+
+.mw-prose table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: 1.5rem;
+}
+
+.mw-prose th,
+.mw-prose td {
+	border: 1px solid var(--mw-stone-dark-60);
+	padding: 0.75rem 1rem;
+	text-align: left;
+}
+
+/* WordPress core blocks that we want to keep on-brand */
+.wp-block-button__link {
+	border-radius: var(--mw-radius-pill);
+	background-color: var(--mw-bronze);
+	color: var(--mw-espresso);
+	text-transform: uppercase;
+	letter-spacing: 0.025em;
+	font-size: 0.875rem;
+	font-weight: 500;
+	padding: 0.75rem 1.75rem;
+}
+
+.wp-block-image img {
+	border-radius: var(--mw-radius-2xl);
+}
+
+/* ---------------------------------------------------------------------------
+ * Elementor compatibility
+ * ------------------------------------------------------------------------ */
+
+/* Elementor "full width" / "canvas" page templates must not be constrained. */
+.elementor-page .mw-main > .elementor,
+.elementor-page .mw-main > .elementor-section,
+.elementor-page .mw-main > .elementor-element {
+	width: 100%;
+}
+
+body.elementor-page .mw-prose {
+	padding: 0;
+}
+
+.elementor-editor-active .mw-header {
+	/* Keep the original fixed header behaviour inside the editor preview. */
+	position: fixed;
+}
+
+/* Elementor container defaults: the theme sets the same 1280px content width
+   as the original `max-w-7xl` grid. */
+.elementor-kit-1 .e-con,
+.e-con[data-settings] {
+	--mw-container: 80rem;
+}
+
+/* Elementor widgets used inside our layouts (headings/text) inherit brand type. */
+.mw-elementor-text > .elementor-widget-container {
+	color: inherit;
+}
+
+/* Keep our own widget spacing predictable inside Elementor columns. */
+.mw-widget {
+	width: 100%;
+}
+
+/* ---------------------------------------------------------------------------
+ * WordPress admin bar offset for the fixed header
+ * ------------------------------------------------------------------------ */
+
+.admin-bar .mw-header {
+	top: 32px;
+}
+
+@media screen and (max-width: 782px) {
+	.admin-bar .mw-header {
+		top: 46px;
+	}
+}
+
+/* ---------------------------------------------------------------------------
+ * Elementor default kit / global styles mapping
+ * (only applied when Elementor's own global colours are used)
+ * ------------------------------------------------------------------------ */
+
+.e-con .mw-container {
+	max-width: var(--mw-container);
+}
+
+/* Responsive: stack the two column split on tablet and below */
+@media (max-width: 1023px) {
+	.mw-split > .mw-split__first,
+	.mw-split > .mw-split__last {
+		order: 0;
+	}
+}
+
+/* -------------------------------------------------------------------------
+ * Accessibility helpers
+ * ---------------------------------------------------------------------- */
+
+.skip-link {
+	position: absolute;
+	left: -9999px;
+	top: 0;
+	z-index: 100;
+	background-color: var(--mw-espresso);
+	color: var(--mw-ivory);
+	padding: 0.75rem 1.25rem;
+	border-radius: 0 0 var(--mw-radius-xl) 0;
+}
+
+.skip-link:focus {
+	left: 0;
+	outline: 2px solid var(--mw-bronze);
+	outline-offset: 2px;
+}

@@ -1,0 +1,109 @@
+{
+  "version": "0.4",
+  "title": "Maison Woodcraft - Single Project",
+  "type": "single",
+  "content": [
+    {
+      "id": "0000021",
+      "elType": "widget",
+      "widgetType": "theme-post-featured-image",
+      "settings": {
+        "image_size": "full",
+        "height": {
+          "unit": "vh",
+          "size": 55,
+          "sizes": {}
+        },
+        "css_filters_css_filter": "custom",
+        "css_filters_brightness": {
+          "unit": "px",
+          "size": 80,
+          "sizes": {}
+        }
+      },
+      "elements": []
+    },
+    {
+      "id": "0000023",
+      "elType": "container",
+      "settings": {
+        "content_width": "boxed",
+        "flex_direction": "column",
+        "flex_gap": {
+          "column": "0",
+          "row": "0",
+          "unit": "px",
+          "size": 0,
+          "isLinked": true
+        },
+        "boxed_width": {
+          "unit": "px",
+          "size": 1216,
+          "sizes": {}
+        },
+        "padding": {
+          "unit": "px",
+          "top": "80",
+          "right": "32",
+          "bottom": "80",
+          "left": "32",
+          "isLinked": false
+        },
+        "padding_mobile": {
+          "unit": "px",
+          "top": "56",
+          "right": "20",
+          "bottom": "56",
+          "left": "20",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "0000022",
+          "elType": "widget",
+          "widgetType": "mw_project_details",
+          "settings": {
+            "show_meta": "yes",
+            "show_gallery": "yes"
+          },
+          "elements": []
+        }
+      ]
+    },
+    {
+      "id": "0000026",
+      "elType": "widget",
+      "widgetType": "mw_cta",
+      "settings": {
+        "eyebrow": "Start Your Project",
+        "heading": "Let's Create a Space That Feels Like Yours.",
+        "text": "Planning a new kitchen, wardrobe, or complete home woodwork project? Tell us about your space and requirements.",
+        "buttons": [
+          {
+            "label": "Request a Quote",
+            "url": {
+              "url": "/get-a-quote",
+              "is_external": "",
+              "nofollow": ""
+            },
+            "variant": "ghost",
+            "_id": "0000024"
+          },
+          {
+            "label": "Chat on WhatsApp",
+            "url": {
+              "url": "",
+              "is_external": "",
+              "nofollow": ""
+            },
+            "variant": "whatsapp",
+            "_id": "0000025"
+          }
+        ]
+      },
+      "elements": []
+    }
+  ],
+  "page_settings": {}
+}

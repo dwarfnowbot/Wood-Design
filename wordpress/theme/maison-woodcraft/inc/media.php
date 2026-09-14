@@ -122,6 +122,17 @@ function mw_attachment_id_for_key( $key ) {
 }
 
 /**
+ * 1×1 transparent GIF used as the initial src of lazy, JS-filled images.
+ *
+ * Keeps the markup valid and stops browsers from re-requesting the page.
+ *
+ * @return string
+ */
+function mw_placeholder_image() {
+	return 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+}
+
+/**
  * Build an <img> tag for a media key, mirroring the original markup
  * (object-fit: cover with the crop coming from CSS).
  *

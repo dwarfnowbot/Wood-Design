@@ -355,107 +355,35 @@ function mw_current_url() {
 }
 
 /* -------------------------------------------------------------------------
- * Menu fallbacks (used before the Primary / footer menus are created, so the
- * navigation matches the original site out of the box).
- * ---------------------------------------------------------------------- */
-
-/**
- * Primary menu fallback — the original navLinks list.
- *
- * @param array $args wp_nav_menu() arguments.
- */
-function mw_primary_menu_fallback( $args = array() ) {
-	$class = isset( $args['menu_class'] ) ? $args['menu_class'] : 'mw-nav__list';
-	$items = array();
-
-	foreach ( (array) mw_content( 'nav', array() ) as $link ) {
-		$label = mw_arg( $link, 'label', '' );
-		$url   = mw_page_url( mw_arg( $link, 'path', '/' ) );
-		$path  = mw_arg( $link, 'path', '/' );
-		$is_current = ( '/' === $path && mw_is_front_page() ) || ( '/' !== $path && is_page( trim( $path, '/' ) ) );
-
-		$items[] = sprintf(
-			'<li class="mw-nav__item%6$s"><a class="mw-nav__link" href="%1$s"%4$s>%5$s</a></li>',
-			esc_url( $url ),
-			'',
-			'',
-			$is_current ? ' aria-current="page"' : '',
-			esc_html( $label ),
-			$is_current ? ' is-active' : ''
-		);
-	}
-
-	printf(
-		'<ul class="%s">%s</ul>',
-		esc_attr( $class ),
-		implode( '', $items ) // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped above.
-	);
-}
-
-/**
- * Footer "Quick Links" fallback — navLinks plus Get a Quote, as in Footer.tsx.
- */
-function mw_footer_quick_links_fallback() {
-	$items = array();
-
-	foreach ( (array) mw_content( 'nav', array() ) as $link ) {
-		$items[] = sprintf(
-			'<li><a href="%1$s">%2$s</a></li>',
-			esc_url( mw_page_url( mw_arg( $link, 'path', '/' ) ) ),
-			esc_html( mw_arg( $link, 'label', '' ) )
-		);
-	}
-
-	$items[] = sprintf(
-		'<li><a href="%1$s">%2$s</a></li>',
-		esc_url( mw_page_url( '/get-a-quote' ) ),
-		esc_html__( 'Get a Quote', 'maison-woodcraft' )
-	);
-
-	echo '<ul class="mw-footer__list">' . implode( '', $items ) . '</ul>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped above.
-}
-
-/**
- * Footer "Services" fallback — the six services from the original site.
- */
-function mw_footer_services_fallback() {
-	$items = array();
-
-	foreach ( mw_services() as $service ) {
-		$items[] = sprintf(
-			'<li><a href="%1$s">%2$s</a></li>',
-			esc_url( mw_page_url( mw_arg( $service, 'path', '/' ) ) ),
-			esc_html( mw_arg( $service, 'title', '' ) )
-		);
-	}
-
-	echo '<ul class="mw-footer__list">' . implode( '', $items ) . '</ul>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped above.
-}
-
-/* -------------------------------------------------------------------------
  * Menu fallbacks
  *
- * Until the user assigns menus, the header and footer render the original
- * navigation straight from the site content, so the design is never empty.
+ * Until menus are assigned in Appearance → Menus, the header and footer render
+ * the original navigation straight from the site content, so the design is
+ * never empty. The fallbacks match components/Footer.tsx (Quick Links include
+ * "Get a Quote", Services lists the six services).
  * ---------------------------------------------------------------------- */
 
 /**
- * Fallback for the primary menu (original navLinks).
+ * Fallback for the primary menu (the original navLinks).
  *
  * @param array $args wp_nav_menu() arguments.
  */
 function mw_primary_menu_fallback( $args = array() ) {
-	$menu_class = mw_arg( (array) $args, 'menu_class', 'mw-nav__list' );
-	$menu_id    = mw_arg( (array) $args, 'menu_id', '' );
+	$args       = (array) $args;
+	$menu_class = mw_arg( $args, 'menu_class', 'mw-nav__list' );
+	$menu_id    = mw_arg( $args, 'menu_id', '' );
+	$current    = mw_current_url();
 	$items      = array();
 
 	foreach ( (array) mw_content( 'nav', array() ) as $link ) {
-		$path  = mw_arg( $link, 'path', '/' );
+		$url  = mw_page_url( mw_arg( $link, 'path', '/' ) );
+		$active = ( $url === $current );
+
 		$items[] = sprintf(
 			'<li class="mw-nav__item%1$s"><a class="mw-nav__link" href="%2$s"%3$s>%4$s</a></li>',
-			mw_page_url( $path ) === mw_current_url() ? ' is-active' : '',
-			esc_url( mw_page_url( $path ) ),
-			mw_page_url( $path ) === mw_current_url() ? ' aria-current="page"' : '',
+			$active ? ' is-active' : '',
+			esc_url( $url ),
+			$active ? ' aria-current="page"' : '',
 			esc_html( mw_arg( $link, 'label', '' ) )
 		);
 	}
@@ -469,17 +397,17 @@ function mw_primary_menu_fallback( $args = array() ) {
 }
 
 /**
- * Fallback for the footer "Quick Links" menu — navLinks + Get a Quote,
- * exactly as in components/Footer.tsx.
+ * Fallback for the footer "Quick Links" menu: navLinks + Get a Quote.
  */
 function mw_footer_quick_links_fallback() {
-	$links = (array) mw_content( 'nav', array() );
+	$links   = (array) mw_content( 'nav', array() );
 	$links[] = array(
 		'label' => __( 'Get a Quote', 'maison-woodcraft' ),
 		'path'  => '/get-a-quote',
 	);
 
 	$items = array();
+
 	foreach ( $links as $link ) {
 		$items[] = sprintf(
 			'<li><a href="%s">%s</a></li>',
@@ -492,7 +420,7 @@ function mw_footer_quick_links_fallback() {
 }
 
 /**
- * Fallback for the footer "Services" menu — the six services.
+ * Fallback for the footer "Services" menu: the six services.
  */
 function mw_footer_services_fallback() {
 	$items = array();

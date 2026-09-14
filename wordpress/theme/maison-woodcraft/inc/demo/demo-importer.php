@@ -112,7 +112,8 @@ function mw_demo_pages() {
 	$out   = array();
 
 	foreach ( (array) $pages as $slug => $copy ) {
-		if ( ! is_array( $copy ) ) {
+		/* "notfound" is the 404 template, not a page. */
+		if ( 'notfound' === $slug || ! is_array( $copy ) ) {
 			continue;
 		}
 
@@ -209,6 +210,29 @@ function mw_demo_clear_elementor_cache() {
 }
 
 /**
+ * Find a post by its exact title (replaces the deprecated get_page_by_title).
+ *
+ * @param string $title     Post title.
+ * @param string $post_type Post type.
+ * @return WP_Post|null
+ */
+function mw_demo_find_by_title( $title, $post_type = 'post' ) {
+	$query = new WP_Query(
+		array(
+			'post_type'              => $post_type,
+			'title'                  => $title,
+			'post_status'            => 'any',
+			'posts_per_page'         => 1,
+			'no_found_rows'          => true,
+			'update_post_meta_cache' => false,
+			'update_post_term_cache' => false,
+		)
+	);
+
+	return $query->posts ? $query->posts[0] : null;
+}
+
+/**
  * Create the sample projects (Projects post type) from projects.ts.
  *
  * @return array Log lines.
@@ -220,7 +244,7 @@ function mw_demo_import_projects() {
 
 	foreach ( (array) $projects as $project ) {
 		$title    = mw_arg( $project, 'title', '' );
-		$existing = get_page_by_title( $title, OBJECT, 'mw_project' );
+		$existing = mw_demo_find_by_title( $title, 'mw_project' );
 
 		$postarr = array(
 			'post_type'    => 'mw_project',
@@ -263,23 +287,39 @@ function mw_demo_import_projects() {
 			set_post_thumbnail( $post_id, $image_id );
 		}
 
+		/*
+		 * The original media key is stored even when the photograph could not be
+		 * copied into the Media Library, so the project keeps its own image and
+		 * the theme still shows the exact original URL.
+		 */
+		if ( $image_key ) {
+			update_post_meta( $post_id, '_mw_project_image_key', $image_key );
+		}
+
 		/* Gallery: the other photographs of the same set, as in the original. */
-		$gallery = array();
-		$group   = $image_key ? preg_replace( '/\.\d+$/', '', $image_key ) : '';
+		$gallery      = array();
+		$gallery_keys = array();
+		$group        = $image_key ? preg_replace( '/\.\d+$/', '', $image_key ) : '';
 
 		if ( $group ) {
 			for ( $i = 0; $i < 8; $i++ ) {
-				$candidate = $group . '.' . $i;
+				$candidate    = $group . '.' . $i;
 				$candidate_id = mw_attachment_id_for_key( $candidate );
 
 				if ( $candidate_id && $candidate_id !== $image_id ) {
 					$gallery[] = $candidate_id;
+				} elseif ( $candidate !== $image_key && mw_image( $candidate ) ) {
+					$gallery_keys[] = $candidate;
 				}
 			}
 		}
 
 		if ( $gallery ) {
 			update_post_meta( $post_id, '_mw_project_gallery', implode( ',', array_slice( $gallery, 0, 4 ) ) );
+		}
+
+		if ( $gallery_keys ) {
+			update_post_meta( $post_id, '_mw_project_gallery_keys', implode( ',', array_slice( $gallery_keys, 0, 4 ) ) );
 		}
 	}
 

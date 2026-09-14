@@ -137,14 +137,24 @@ function mw_is_front_page() {
  */
 function mw_page_uses_elementor( $post_id = null ) {
 	$post_id = $post_id ? $post_id : get_the_ID();
+
 	if ( ! $post_id ) {
 		return false;
+	}
+
+	/*
+	 * Without Elementor the stored _elementor_data cannot be rendered, so the
+	 * theme's own sections are used instead. That keeps the pages complete even
+	 * if the plugin is deactivated after the demo content was imported.
+	 */
+	if ( ! function_exists( 'mw_is_elementor_active' ) || ! mw_is_elementor_active() ) {
+		return (bool) apply_filters( 'mw_page_uses_elementor', false, $post_id );
 	}
 
 	$edit_mode = get_post_meta( $post_id, '_elementor_edit_mode', true );
 	$data      = get_post_meta( $post_id, '_elementor_data', true );
 
-	return ( 'builder' === $edit_mode && ! empty( $data ) );
+	return (bool) apply_filters( 'mw_page_uses_elementor', ( 'builder' === $edit_mode && ! empty( $data ) ), $post_id );
 }
 
 /**

@@ -86,7 +86,7 @@ endif;
 <div class="mw-modal" data-mw-modal hidden>
 	<div class="mw-modal__dialog" role="dialog" aria-modal="true" aria-label="<?php esc_attr_e( 'Project details', 'maison-woodcraft' ); ?>">
 		<button type="button" class="mw-modal__close" data-mw-modal-close aria-label="<?php esc_attr_e( 'Close project details', 'maison-woodcraft' ); ?>">&times;</button>
-		<div class="mw-modal__media"><img src="" alt="" /></div>
+		<div class="mw-modal__media"><img src="<?php echo esc_url( mw_placeholder_image() ); ?>" alt="" /></div>
 		<div class="mw-modal__body">
 			<span class="mw-modal__category" data-mw-modal-category></span>
 			<h3 class="mw-modal__title" data-mw-modal-title></h3>

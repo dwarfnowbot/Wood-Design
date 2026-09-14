@@ -10,11 +10,11 @@ $post_id      = mw_arg( $args, 'post_id', get_the_ID() );
 $show_meta    = (bool) mw_arg( $args, 'show_meta', true );
 $show_gallery = (bool) mw_arg( $args, 'show_gallery', true );
 $gallery_override = mw_arg( $args, 'gallery', array() );
+$image_key  = mw_project_image_key( $post_id );
 $location = get_post_meta( $post_id, '_mw_project_location', true );
 $materials = get_post_meta( $post_id, '_mw_project_materials', true );
 $terms    = get_the_terms( $post_id, 'mw_project_cat' );
-$gallery  = get_post_meta( $post_id, '_mw_project_gallery', true );
-$gallery  = is_array( $gallery ) ? $gallery : array_filter( array_map( 'intval', explode( ',', (string) $gallery ) ) );
+$gallery  = mw_project_gallery_images( $post_id );
 
 if ( ! empty( $gallery_override ) ) {
 	$gallery = $gallery_override;
@@ -29,6 +29,9 @@ $category = ( $terms && ! is_wp_error( $terms ) ) ? $terms[0]->name : '';
 	<?php
 	if ( has_post_thumbnail( $post_id ) ) {
 		echo get_the_post_thumbnail( $post_id, 'mw-hero', array( 'alt' => esc_attr( get_the_title( $post_id ) ) ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	} elseif ( $image_key ) {
+		// No Media Library copy yet: show the original photograph.
+		echo mw_image_html( $image_key, '', get_the_title( $post_id ), array( 'sizes' => '100vw' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 	?>
 </div>
@@ -75,9 +78,9 @@ $category = ( $terms && ! is_wp_error( $terms ) ) ? $terms[0]->name : '';
 </div>
 <?php if ( $gallery ) : ?>
 	<div class="mw-project-gallery">
-		<?php foreach ( $gallery as $attachment_id ) : ?>
-			<a href="<?php echo esc_url( wp_get_attachment_image_url( $attachment_id, 'full' ) ); ?>" data-mw-lightbox="1">
-				<?php echo wp_get_attachment_image( $attachment_id, 'mw-card' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+		<?php foreach ( $gallery as $image ) : ?>
+			<a href="<?php echo esc_url( $image['url'] ); ?>" data-mw-lightbox="1">
+				<img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $image['alt'] ? $image['alt'] : get_the_title( $post_id ) ); ?>" class="mw-img" loading="lazy" decoding="async">
 			</a>
 		<?php endforeach; ?>
 	</div>

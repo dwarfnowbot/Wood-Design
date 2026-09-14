@@ -173,6 +173,45 @@ add_action( 'save_post_mw_project', 'mw_save_project_meta' );
  * ---------------------------------------------------------------------- */
 
 /**
+ * Original media key of a project (set by the demo importer).
+ *
+ * Projects imported before the key was stored are matched through their
+ * original source id (p1…p10) so every project keeps its own photograph.
+ *
+ * @param int $post_id Project ID.
+ * @return string
+ */
+function mw_project_image_key( $post_id ) {
+	$post_id = (int) $post_id;
+
+	if ( ! $post_id ) {
+		return '';
+	}
+
+	$key = (string) get_post_meta( $post_id, '_mw_project_image_key', true );
+	if ( $key ) {
+		return $key;
+	}
+
+	$source_id = (string) get_post_meta( $post_id, '_mw_project_source_id', true );
+	if ( ! $source_id ) {
+		return '';
+	}
+
+	foreach ( mw_projects() as $project ) {
+		if ( mw_arg( $project, 'id', '' ) === $source_id ) {
+			$key = (string) mw_arg( $project, 'image', '' );
+			if ( $key ) {
+				update_post_meta( $post_id, '_mw_project_image_key', $key );
+			}
+			return $key;
+		}
+	}
+
+	return '';
+}
+
+/**
  * Fetch projects as card data (imported projects first, sample concepts as the
  * fallback so the design is never empty).
  *
@@ -216,6 +255,20 @@ function mw_get_project_cards( $args = array() ) {
 		$category = ( $terms && ! is_wp_error( $terms ) ) ? $terms[0]->name : '';
 		$image    = get_the_post_thumbnail_url( $post->ID, 'mw-card' );
 
+		/*
+		 * No featured image yet (for example the demo import ran before the
+		 * photographs could be copied into the Media Library): fall back to the
+		 * project's own original photograph rather than an unrelated one.
+		 */
+		if ( ! $image ) {
+			$image_key = mw_project_image_key( $post->ID );
+			$image     = $image_key ? mw_image_url( $image_key ) : '';
+		}
+
+		if ( ! $image ) {
+			$image = mw_image_url( 'living.3' );
+		}
+
 		$cards[] = array(
 			'id'        => $post->ID,
 			'title'     => get_the_title( $post ),
@@ -223,7 +276,7 @@ function mw_get_project_cards( $args = array() ) {
 			'location'  => get_post_meta( $post->ID, '_mw_project_location', true ),
 			'materials' => get_post_meta( $post->ID, '_mw_project_materials', true ),
 			'description' => has_excerpt( $post ) ? get_the_excerpt( $post ) : wp_trim_words( wp_strip_all_tags( $post->post_content ), 26 ),
-			'image'     => $image ? $image : mw_image_url( 'living.3' ),
+			'image'     => $image,
 			'image_id'  => get_post_thumbnail_id( $post->ID ),
 			'url'       => get_permalink( $post ),
 		);
@@ -236,4 +289,45 @@ function mw_get_project_cards( $args = array() ) {
 	}
 
 	return $cards;
+}
+
+/**
+ * Gallery of a project as image URLs, in the stored order.
+ *
+ * Uses Media Library attachments when the photographs were imported and falls
+ * back to the original media keys otherwise.
+ *
+ * @param int $post_id Project ID.
+ * @return array[] Each item: url, id, alt.
+ */
+function mw_project_gallery_images( $post_id ) {
+	$post_id = (int) $post_id;
+	$ids     = get_post_meta( $post_id, '_mw_project_gallery', true );
+	$ids     = is_array( $ids ) ? $ids : array_filter( array_map( 'intval', explode( ',', (string) $ids ) ) );
+	$items   = array();
+
+	foreach ( $ids as $attachment_id ) {
+		$url = wp_get_attachment_image_url( $attachment_id, 'mw-card' );
+		if ( $url ) {
+			$items[] = array(
+				'id'  => (int) $attachment_id,
+				'url' => $url,
+				'alt' => (string) get_post_meta( $attachment_id, '_wp_attachment_image_alt', true ),
+			);
+		}
+	}
+
+	if ( ! $items ) {
+		$keys = get_post_meta( $post_id, '_mw_project_gallery_keys', true );
+		$keys = is_array( $keys ) ? $keys : array_filter( array_map( 'trim', explode( ',', (string) $keys ) ) );
+
+		foreach ( $keys as $key ) {
+			$image = mw_resolve_image( $key, get_the_title( $post_id ) );
+			if ( ! empty( $image['url'] ) ) {
+				$items[] = $image;
+			}
+		}
+	}
+
+	return $items;
 }

@@ -3,7 +3,7 @@ Contributors: dwarfnowbot
 Requires at least: 6.0
 Tested up to: 6.6
 Requires PHP: 7.4
-Version: 1.0.1
+Version: 1.0.2
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: elementor, custom-menu, custom-logo, e-commerce, blog, one-column, two-columns, right-sidebar, translation-ready
@@ -64,6 +64,13 @@ Released under the terms of the GNU GPL v2 or later.
 Photographs: the same image files the original React project referenced.
 
 == Changelog ==
+
+= 1.0.2 =
+* Extra safety when Elementor is active: the theme's Elementor widgets are only
+  registered when the shared widget base class could really be loaded, so a
+  version mismatch can never produce a "class not found" fatal error.
+* Rebuilt ZIP published under a versioned file name as well, to make it obvious
+  which download is installed.
 
 = 1.0.1 =
 * Fixed a fatal "Cannot redeclare mw_primary_menu_fallback()" error that could

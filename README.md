@@ -53,7 +53,7 @@ React, Vite, npm or node at runtime:
 
 ### Quick start
 
-1. Install `wordpress/maison-woodcraft-theme.zip` in WordPress
+1. Install `wordpress/maison-woodcraft-theme.zip (`maison-woodcraft-theme-1.0.2.zip` is the same build with the version in the file name)` in WordPress
    (*Appearance → Themes → Add New → Upload Theme*) and activate it.
 2. Install **Elementor** (free; Elementor Pro optional for the Theme Builder).
 3. *Appearance → Maison Woodcraft → Import Demo Content*

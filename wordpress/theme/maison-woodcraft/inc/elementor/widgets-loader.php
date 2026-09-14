@@ -43,11 +43,47 @@ function mw_elementor_widget_map() {
 }
 
 /**
+ * Make sure the shared widget base class is loaded.
+ *
+ * `inc/elementor/class-mw-widget-base.php` returns early when Elementor's
+ * Widget_Base is not available yet, and `require_once` will not run a file a
+ * second time — so the class is declared here when needed.
+ *
+ * @return bool Whether MW_Widget_Base can be used.
+ */
+function mw_elementor_widget_base_ready() {
+	if ( class_exists( 'MW_Widget_Base' ) ) {
+		return true;
+	}
+
+	if ( ! class_exists( '\\Elementor\\Widget_Base' ) ) {
+		return false;
+	}
+
+	if ( ! class_exists( 'MW_Widget_Base' ) ) {
+		// Elementor is loaded now: evaluate the base class definition.
+		include MW_THEME_DIR . '/inc/elementor/class-mw-widget-base.php';
+	}
+
+	return class_exists( 'MW_Widget_Base' );
+}
+
+/**
  * Register the widgets with Elementor.
  *
  * @param object $widgets_manager Elementor widgets manager.
  */
 function mw_register_elementor_widgets( $widgets_manager ) {
+	/*
+	 * The widget classes extend MW_Widget_Base, which only exists while
+	 * Elementor's own Widget_Base is available. If the base class is missing the
+	 * theme simply offers no widgets instead of dying with a "class not found"
+	 * fatal error.
+	 */
+	if ( ! mw_elementor_widget_base_ready() ) {
+		return;
+	}
+
 	foreach ( mw_elementor_widget_map() as $file => $class ) {
 		$path = MW_THEME_DIR . '/inc/elementor/widgets/' . $file;
 
@@ -70,6 +106,10 @@ add_action( 'elementor/widgets/register', 'mw_register_elementor_widgets' );
  * @param object $widgets_manager Widgets manager.
  */
 function mw_register_elementor_widgets_legacy( $widgets_manager ) {
+	if ( ! mw_elementor_widget_base_ready() ) {
+		return;
+	}
+
 	if ( method_exists( $widgets_manager, 'register_widget_type' ) ) {
 		foreach ( mw_elementor_widget_map() as $file => $class ) {
 			$path = MW_THEME_DIR . '/inc/elementor/widgets/' . $file;

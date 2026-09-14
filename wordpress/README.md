@@ -22,7 +22,7 @@ wordpress/
 ## 1. Install
 
 1. **Theme** — WordPress admin → *Appearance → Themes → Add New → Upload Theme* →
-   choose `wordpress/maison-woodcraft-theme.zip` → **Activate**
+   choose `wordpress/maison-woodcraft-theme.zip (`maison-woodcraft-theme-1.0.2.zip` is the same build with the version in the file name)` → **Activate**
    (or copy `wordpress/theme/maison-woodcraft/` into `wp-content/themes/`).
 
    > **Upgrading from an earlier copy?** Delete the old theme first
@@ -352,7 +352,7 @@ of truth the PHP templates read at runtime.
    in cPanel File Manager or over FTP — WordPress then falls back to a default
    theme.
 3. Delete the broken folder completely and upload
-   `wordpress/maison-woodcraft-theme.zip` again through *Appearance → Themes →
+   `wordpress/maison-woodcraft-theme.zip (`maison-woodcraft-theme-1.0.2.zip` is the same build with the version in the file name)` again through *Appearance → Themes →
    Add New → Upload Theme*.
 
 **Fatal: "Cannot redeclare mw_primary_menu_fallback()"** — this can only happen

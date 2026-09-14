@@ -91,10 +91,20 @@ function mw_register_elementor_widgets( $widgets_manager ) {
 			continue;
 		}
 
-		require_once $path;
+		/*
+		 * A single broken widget must never take the whole site down: if loading
+		 * or registering one fails, the rest are still offered.
+		 */
+		try {
+			require_once $path;
 
-		if ( class_exists( $class ) ) {
-			$widgets_manager->register( new $class() );
+			if ( class_exists( $class ) ) {
+				$widgets_manager->register( new $class() );
+			}
+		} catch ( \Throwable $e ) {
+			if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+				error_log( 'Maison Woodcraft: widget ' . $class . ' could not be registered — ' . $e->getMessage() ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
+			}
 		}
 	}
 }
@@ -118,10 +128,14 @@ function mw_register_elementor_widgets_legacy( $widgets_manager ) {
 				continue;
 			}
 
-			require_once $path;
+			try {
+				require_once $path;
 
-			if ( class_exists( $class ) ) {
-				$widgets_manager->register_widget_type( new $class() );
+				if ( class_exists( $class ) && method_exists( $widgets_manager, 'register_widget_type' ) ) {
+					$widgets_manager->register_widget_type( new $class() );
+				}
+			} catch ( \Throwable $e ) {
+				continue;
 			}
 		}
 	}

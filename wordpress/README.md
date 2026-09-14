@@ -22,7 +22,7 @@ wordpress/
 ## 1. Install
 
 1. **Theme** — WordPress admin → *Appearance → Themes → Add New → Upload Theme* →
-   choose `wordpress/maison-woodcraft-theme.zip (`maison-woodcraft-theme-1.0.2.zip` is the same build with the version in the file name)` → **Activate**
+   choose `wordpress/maison-woodcraft-theme.zip` (or `maison-woodcraft-theme-1.0.3.zip`, the same build with the version in the file name) → **Activate**
    (or copy `wordpress/theme/maison-woodcraft/` into `wp-content/themes/`).
 
    > **Upgrading from an earlier copy?** Delete the old theme first
@@ -352,8 +352,17 @@ of truth the PHP templates read at runtime.
    in cPanel File Manager or over FTP — WordPress then falls back to a default
    theme.
 3. Delete the broken folder completely and upload
-   `wordpress/maison-woodcraft-theme.zip (`maison-woodcraft-theme-1.0.2.zip` is the same build with the version in the file name)` again through *Appearance → Themes →
+   `wordpress/maison-woodcraft-theme.zip` (or `maison-woodcraft-theme-1.0.3.zip`, the same build with the version in the file name) again through *Appearance → Themes →
    Add New → Upload Theme*.
+
+**Critical error on the front end *and* in the Elementor editor.** This was a
+bug in versions 1.0.0–1.0.2: Elementor initialises its widget manager on every
+request, and the theme's widget classes could be loaded before their shared base
+class existed (`PHP Fatal error: Uncaught Error: Class "MW_Widget_Base" not
+found in .../inc/elementor/widgets/class-mw-hero-widget.php`). Version 1.0.3
+fixes it: every widget checks for the base class, registration is wrapped in
+try/catch and the base class is loaded on demand. Update to 1.0.3 (delete the old
+theme folder first) and the error is gone.
 
 **Fatal: "Cannot redeclare mw_primary_menu_fallback()"** — this can only happen
 with a stale copy of an early build of the theme (`inc/template-tags.php` kept in

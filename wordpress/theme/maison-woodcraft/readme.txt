@@ -3,7 +3,7 @@ Contributors: dwarfnowbot
 Requires at least: 6.0
 Tested up to: 6.6
 Requires PHP: 7.4
-Version: 1.0.2
+Version: 1.0.3
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: elementor, custom-menu, custom-logo, e-commerce, blog, one-column, two-columns, right-sidebar, translation-ready
@@ -64,6 +64,14 @@ Released under the terms of the GNU GPL v2 or later.
 Photographs: the same image files the original React project referenced.
 
 == Changelog ==
+
+= 1.0.3 =
+* Fixed the "critical error" that appeared on the front end and in the Elementor
+  editor when Elementor was active: Elementor initialises its widget manager on
+  every request, and the theme's widget classes were being loaded before their
+  shared base class existed ("Class MW_Widget_Base not found"). Every widget
+  file now checks for the base class and the registration routine skips (instead
+  of dying) if a widget cannot be loaded.
 
 = 1.0.2 =
 * Extra safety when Elementor is active: the theme's Elementor widgets are only

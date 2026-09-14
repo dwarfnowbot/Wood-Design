@@ -9,6 +9,15 @@ defined( 'ABSPATH' ) || exit;
 
 use Elementor\Controls_Manager;
 
+/*
+ * The base class only exists while Elementor's Widget_Base is loaded. Bail out
+ * (instead of defining a class that would be half-built) if that is not the
+ * case — the widget registration code skips missing classes.
+ */
+if ( ! class_exists( 'MW_Widget_Base' ) ) {
+	return;
+}
+
 /**
  * Class MW_Button_Widget
  */

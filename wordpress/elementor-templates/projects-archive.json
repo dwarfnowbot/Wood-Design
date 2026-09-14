@@ -1,0 +1,69 @@
+{
+  "version": "0.4",
+  "title": "Maison Woodcraft - Projects Archive",
+  "type": "archive",
+  "content": [
+    {
+      "id": "0000029",
+      "elType": "container",
+      "settings": {
+        "content_width": "boxed",
+        "flex_direction": "column",
+        "flex_gap": {
+          "column": "0",
+          "row": "64",
+          "unit": "px",
+          "size": 64,
+          "isLinked": true
+        },
+        "boxed_width": {
+          "unit": "px",
+          "size": 1216,
+          "sizes": {}
+        },
+        "padding": {
+          "unit": "px",
+          "top": "112",
+          "right": "32",
+          "bottom": "112",
+          "left": "32",
+          "isLinked": false
+        },
+        "padding_mobile": {
+          "unit": "px",
+          "top": "80",
+          "right": "20",
+          "bottom": "80",
+          "left": "20",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "0000027",
+          "elType": "widget",
+          "widgetType": "mw_section_heading",
+          "settings": {
+            "eyebrow": "Portfolio",
+            "heading": "Our Projects",
+            "tag": "h1"
+          },
+          "elements": []
+        },
+        {
+          "id": "0000028",
+          "elType": "widget",
+          "widgetType": "mw_project_grid",
+          "settings": {
+            "source": "cpt",
+            "limit": 24,
+            "filters": "yes",
+            "link_label": "View Project"
+          },
+          "elements": []
+        }
+      ]
+    }
+  ],
+  "page_settings": {}
+}

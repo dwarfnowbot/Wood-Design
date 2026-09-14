@@ -1,0 +1,102 @@
+/*
+ * Maison Woodcraft — admin styles.
+ */
+.mw-admin-card {
+	background: #fff;
+	border: 1px solid #dcdcde;
+	border-radius: 8px;
+	padding: 20px 24px;
+	max-width: 900px;
+	margin: 16px 0;
+}
+
+.mw-admin-card h2 {
+	margin-top: 0;
+}
+
+.mw-admin-status {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.mw-admin-status li {
+	padding: 6px 0;
+	border-bottom: 1px solid #f0f0f1;
+}
+
+.mw-admin-status li:last-child {
+	border-bottom: 0;
+}
+
+.mw-status-ok {
+	color: #1e7c3a;
+	font-weight: 600;
+}
+
+.mw-status-warn {
+	color: #a35c00;
+	font-weight: 600;
+}
+
+.mw-status-error {
+	color: #b32d2e;
+	font-weight: 600;
+}
+
+.mw-admin-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	align-items: center;
+	margin-top: 12px;
+}
+
+.mw-admin-note {
+	color: #50575e;
+	max-width: 780px;
+}
+
+.mw-admin-color-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+	gap: 10px;
+	margin: 12px 0;
+}
+
+.mw-admin-color {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	background: #f6f7f7;
+	border: 1px solid #e5e5e5;
+	border-radius: 6px;
+	padding: 8px 10px;
+	font-size: 12px;
+}
+
+.mw-admin-color span.swatch {
+	width: 26px;
+	height: 26px;
+	border-radius: 4px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	flex: 0 0 auto;
+}
+
+.mw-admin-log {
+	background: #1d2327;
+	color: #d9d9d9;
+	border-radius: 6px;
+	padding: 12px 16px;
+	font-family: Menlo, Consolas, monospace;
+	font-size: 12px;
+	line-height: 1.6;
+	max-height: 320px;
+	overflow: auto;
+	white-space: pre-wrap;
+}
+
+.mw-admin-error {
+	color: #b32d2e;
+	font-weight: 600;
+}

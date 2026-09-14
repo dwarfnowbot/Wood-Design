@@ -1,0 +1,128 @@
+{
+  "version": "0.4",
+  "title": "Maison Woodcraft - Global Kit",
+  "type": "kit",
+  "content": [],
+  "page_settings": {
+    "system_colors": [
+      {
+        "_id": "primary",
+        "title": "Bronze",
+        "color": "#a9814f"
+      },
+      {
+        "_id": "secondary",
+        "title": "Espresso",
+        "color": "#2b241d"
+      },
+      {
+        "_id": "text",
+        "title": "Espresso light",
+        "color": "#4a4038"
+      },
+      {
+        "_id": "accent",
+        "title": "Champagne",
+        "color": "#d9c6a5"
+      }
+    ],
+    "custom_colors": [
+      {
+        "_id": "ivory",
+        "title": "Ivory",
+        "color": "#f7f3ec"
+      },
+      {
+        "_id": "stone",
+        "title": "Stone",
+        "color": "#ece4d6"
+      },
+      {
+        "_id": "stone-dark",
+        "title": "Stone dark",
+        "color": "#ddd2bd"
+      },
+      {
+        "_id": "walnut",
+        "title": "Walnut",
+        "color": "#6b4a34"
+      },
+      {
+        "_id": "bronze-light",
+        "title": "Bronze light",
+        "color": "#c9a877"
+      },
+      {
+        "_id": "charcoal",
+        "title": "Charcoal",
+        "color": "#2a2a28"
+      },
+      {
+        "_id": "whatsapp",
+        "title": "WhatsApp",
+        "color": "#25d366"
+      }
+    ],
+    "system_typography": [
+      {
+        "_id": "primary",
+        "title": "Primary",
+        "typography_typography": "custom",
+        "typography_font_family": "Cormorant Garamond",
+        "typography_font_weight": "600"
+      },
+      {
+        "_id": "secondary",
+        "title": "Secondary",
+        "typography_typography": "custom",
+        "typography_font_family": "Jost",
+        "typography_font_weight": "400"
+      },
+      {
+        "_id": "text",
+        "title": "Text",
+        "typography_typography": "custom",
+        "typography_font_family": "Jost",
+        "typography_font_weight": "400"
+      },
+      {
+        "_id": "accent",
+        "title": "Accent",
+        "typography_typography": "custom",
+        "typography_font_family": "Jost",
+        "typography_font_weight": "500",
+        "typography_text_transform": "uppercase"
+      }
+    ],
+    "custom_typography": [
+      {
+        "_id": "serif-display",
+        "title": "Serif display",
+        "typography_typography": "custom",
+        "typography_font_family": "Cormorant Garamond",
+        "typography_font_weight": "600"
+      },
+      {
+        "_id": "eyebrow",
+        "title": "Eyebrow",
+        "typography_typography": "custom",
+        "typography_font_family": "Jost",
+        "typography_font_weight": "500",
+        "typography_text_transform": "uppercase"
+      }
+    ],
+    "default_generic_fonts": "Sans-serif",
+    "site_name": "Maison Woodcraft",
+    "site_description": "Custom Kitchens & Complete Home Woodwork",
+    "container_width": {
+      "unit": "px",
+      "size": 1280,
+      "sizes": {}
+    },
+    "space_between_widgets": {
+      "unit": "px",
+      "size": 24,
+      "sizes": {}
+    }
+  }
+}

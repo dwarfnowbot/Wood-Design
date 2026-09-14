@@ -3,7 +3,7 @@ Contributors: dwarfnowbot
 Requires at least: 6.0
 Tested up to: 6.6
 Requires PHP: 7.4
-Version: 1.0.0
+Version: 1.0.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: elementor, custom-menu, custom-logo, e-commerce, blog, one-column, two-columns, right-sidebar, translation-ready
@@ -62,3 +62,22 @@ Maison Woodcraft WordPress theme, (C) 2026
 Released under the terms of the GNU GPL v2 or later.
 
 Photographs: the same image files the original React project referenced.
+
+== Changelog ==
+
+= 1.0.1 =
+* Fixed a fatal "Cannot redeclare mw_primary_menu_fallback()" error that could
+  occur on sites where an earlier copy of the theme was already installed
+  (re-uploading the theme used to keep the old file in place). The three menu
+  fallbacks now use function_exists() guards, and the duplicate definitions are
+  gone.
+* "Import Demo Content" no longer creates a /notfound/ page (the 404 copy is the
+  404 template, not a page).
+* Projects keep their own photograph when the images could not be copied into
+  the Media Library: the original image key is stored on each project and used
+  as the featured-image fallback, and project galleries render from attachments
+  or image keys.
+* Pages fall back to the theme's own sections when Elementor is not active.
+
+= 1.0.0 =
+* First release: complete conversion of the original React website.

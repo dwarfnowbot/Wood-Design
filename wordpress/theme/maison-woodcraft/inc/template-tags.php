@@ -368,6 +368,11 @@ function mw_current_url() {
  *
  * @param array $args wp_nav_menu() arguments.
  */
+if ( ! function_exists( 'mw_primary_menu_fallback' ) ) :
+
+/**
+ * @ignore
+ */
 function mw_primary_menu_fallback( $args = array() ) {
 	$args       = (array) $args;
 	$menu_class = mw_arg( $args, 'menu_class', 'mw-nav__list' );
@@ -395,9 +400,12 @@ function mw_primary_menu_fallback( $args = array() ) {
 		implode( '', $items ) // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped above.
 	);
 }
+endif;
+
+if ( ! function_exists( 'mw_footer_quick_links_fallback' ) ) :
 
 /**
- * Fallback for the footer "Quick Links" menu: navLinks + Get a Quote.
+ * @ignore
  */
 function mw_footer_quick_links_fallback() {
 	$links   = (array) mw_content( 'nav', array() );
@@ -418,9 +426,12 @@ function mw_footer_quick_links_fallback() {
 
 	echo '<ul class="mw-footer__list">' . implode( '', $items ) . '</ul>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped above.
 }
+endif;
+
+if ( ! function_exists( 'mw_footer_services_fallback' ) ) :
 
 /**
- * Fallback for the footer "Services" menu: the six services.
+ * @ignore
  */
 function mw_footer_services_fallback() {
 	$items = array();
@@ -435,3 +446,4 @@ function mw_footer_services_fallback() {
 
 	echo '<ul class="mw-footer__list">' . implode( '', $items ) . '</ul>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped above.
 }
+endif;

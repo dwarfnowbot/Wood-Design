@@ -24,6 +24,13 @@ wordpress/
 1. **Theme** — WordPress admin → *Appearance → Themes → Add New → Upload Theme* →
    choose `wordpress/maison-woodcraft-theme.zip` → **Activate**
    (or copy `wordpress/theme/maison-woodcraft/` into `wp-content/themes/`).
+
+   > **Upgrading from an earlier copy?** Delete the old theme first
+   > (*Appearance → Themes → switch to any other theme → Theme Details → Delete*,
+   > or remove `wp-content/themes/maison-woodcraft/` over FTP / cPanel File
+   > Manager) and then upload the new ZIP. WordPress merges uploads into an
+   > existing folder instead of replacing it, so files that no longer belong to
+   > the theme can otherwise stay behind.
 2. **Plugins**
    * **Elementor** (free) — required if you want to edit the pages visually.
    * **Elementor Pro** (optional) — required only for the Theme Builder
@@ -318,12 +325,53 @@ of truth the PHP templates read at runtime.
 * [x] Projects are a real post type with archive/grid + single template.
 * [x] Every element of the original design is editable: 21 Elementor widgets plus
       the PHP fallback that renders the same markup.
-* [x] Theme activates without PHP fatals (all PHP files pass a PHP 8.3 syntax
-      check — run `tools/lint-php.mjs`), no missing functions, no dead template parts.
+* [x] Theme activates without PHP fatals: the shipped ZIP was installed and
+      activated inside a real WordPress install (WordPress master + PHP 8.3 +
+      SQLite), the demo importer ran and all eleven URLs rendered with no
+      warnings, notices or fatals. Every PHP file also passes a syntax check
+      under PHP 8.3 **and** PHP 7.4 (`node tools/lint-php.mjs <theme>`), there are
+      no missing functions, no duplicate function definitions and no dead
+      template parts.
 * [x] Responsive behaviour, image cropping and alt text preserved from the
       original project.
 
-## 13. Uninstall
+## 13. Troubleshooting
+
+**"There has been a critical error on this website" right after activation.**
+
+1. The site is fine — the error is an uncaught PHP error in the theme. Get the
+   exact message from any of these:
+   * the *"Your site is experiencing a technical issue"* email WordPress sends
+     to the admin address,
+   * `wp-content/debug.log` after adding
+     `define( 'WP_DEBUG', true ); define( 'WP_DEBUG_LOG', true );
+     define( 'WP_DEBUG_DISPLAY', false );` to `wp-config.php`,
+   * your host's error log (cPanel → *Metrics → Errors*, or the log viewer).
+2. Recover access: switch to another theme. If the admin area is also broken,
+   rename `wp-content/themes/maison-woodcraft/` to `maison-woodcraft-broken/`
+   in cPanel File Manager or over FTP — WordPress then falls back to a default
+   theme.
+3. Delete the broken folder completely and upload
+   `wordpress/maison-woodcraft-theme.zip` again through *Appearance → Themes →
+   Add New → Upload Theme*.
+
+**Fatal: "Cannot redeclare mw_primary_menu_fallback()"** — this can only happen
+with a stale copy of an early build of the theme (`inc/template-tags.php` kept in
+place by WordPress's merge-on-upload behaviour). Delete the theme folder and
+install the current ZIP; from version 1.0.1 the three menu fallbacks are wrapped
+in `function_exists()` guards so a leftover file can never break the site again.
+
+**The pages look like plain text** — Elementor is not active, so the theme is
+rendering its own sections instead of the stored Elementor layouts. Install and
+activate Elementor, then open any page with *Edit with Elementor*.
+
+**Images are missing after the import** — the server could not download the
+original photographs. Upload them into the Media Library and set them as the
+featured image / replace the image in Elementor; everything else keeps working.
+
+---
+
+## 14. Uninstall
 
 Deactivating the theme leaves your content, entries and projects untouched.
 Deleting it removes the code only; pages, media, projects and form entries stay
